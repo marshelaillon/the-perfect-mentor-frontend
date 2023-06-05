@@ -3,7 +3,7 @@ import './App.css';
 export default function App() {
   return (
     <>
-      <header className="mb-8 pt-20">
+      <header className="mb-8 pt-12">
         <h1 className="font-base font-black uppercase text-5xl text-primary-dark ">
           the <br />
           perfect <br />
