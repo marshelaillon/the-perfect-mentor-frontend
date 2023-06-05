@@ -2,19 +2,21 @@ import './App.css';
 
 export default function App() {
   return (
-    <div className="bg-primary-yellow min-h-screen font-base p-8 relative">
-      <h1 className="font-base font-xbold uppercase text-5xl text-primary-dark mb-8 pt-20">
-        the <br />
-        perfect <br />
-        <span className="text-white">m</span>entor
-      </h1>
+    <>
+      <header className="mb-8 pt-20">
+        <h1 className="font-base font-black uppercase text-5xl text-primary-dark ">
+          the <br />
+          perfect <br />
+          <span className="text-white">m</span>entor
+        </h1>
+      </header>
 
-      <main className="bg-primary-yellow">
+      <main>
         <div className="image-container"></div>
         <div className="image-container"></div>
         <div className="image-container"></div>
 
-        <div className="login-buttons-container absolute bottom-0 left-0 right-0 flex justify-center flex-col gap-2 p-6 mb-16">
+        <div className="login-buttons-container absolute bottom-0 left-0 right-0 flex justify-center flex-col gap-2 p-6 mb-12">
           <button className="bg-primary-dark py-5 rounded-full text-primary-white">
             Sign up
           </button>
@@ -23,6 +25,6 @@ export default function App() {
           </button>
         </div>
       </main>
-    </div>
+    </>
   );
 }

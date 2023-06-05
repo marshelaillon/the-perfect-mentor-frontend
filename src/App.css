@@ -1,4 +1,12 @@
-.img-container {
+body {
+  background-color: #bfd732;
+  min-height: 100vh;
+  font-family: 'Heebo';
+  position: relative;
+  padding: 1.5rem;
+}
+
+/* .img-container {
   width: 90%;
   position: relative;
 }
@@ -11,7 +19,7 @@
   top: 0;
   width: 178.79px;
   height: 178.79px;
-  background-image: url('assets/doodle-1.png');
+
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -25,7 +33,45 @@
   width: 100%;
   height: 375px;
   margin-top: -75px;
-  background-image: url('assets/saly-1.png');
+
   background-size: cover;
   background-repeat: no-repeat;
+} */
+
+/* Contenedor de imágenes */
+.image-container {
+  position: relative;
+  /* margin-bottom: 20px; */
+  /* overflow: hidden; */
+}
+
+.image-container::before {
+  content: '';
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Saly */
+.image-container:nth-child(1)::before {
+  background-image: url('assets/saly-1.png');
+  height: 500px;
+  width: 100%;
+  top: -105px;
+}
+
+/* Doodle */
+.image-container:nth-child(2)::before {
+  background-image: url('assets/doodle-1.png');
+  height: 190px;
+  width: 190px;
+}
+
+/* Doodle-2 */
+.image-container:nth-child(3)::before {
+  background-image: url('assets/doodle-2.png');
+  width: 100%;
+  height: 100px;
+  top: 230px;
+  left: 30%;
 }

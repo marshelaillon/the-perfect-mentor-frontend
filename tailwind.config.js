@@ -17,7 +17,8 @@ export default {
       fontWeight: {
         regular: 400,
         bold: 700,
-        xbold: 800,
+        extraBold: 800,
+        black: 900,
       },
     },
   },
