@@ -1,44 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #bfd732;
   min-height: 100vh;
   font-family: 'Heebo';
-  position: relative;
-  padding: 1.5rem;
+  padding: 1rem;
+}
+
+.main-container {
+  max-height: 300px;
 }
 
 /* Contenedor de imágenes */
 .image-container {
   position: relative;
-  /* margin-bottom: 20px; */
-}
-
-.image-container::before {
-  content: '';
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: contain;
+  height: 500px;
 }
 
 /* Saly */
 .image-container:nth-child(1)::before {
+  position: absolute;
+  content: '';
+  display: block;
   background-image: url('assets/saly-1.png');
-  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
-  top: -105px;
+  max-width: 450px;
+  height: 100%;
+  max-height: 410px;
+  top: -23%;
+  left: 0;
 }
 
 /* Doodle */
-.image-container:nth-child(2)::before {
+/* .image-container:nth-child(2)::before {
+  position: absolute;
+  content: '';
+  display: block;
   background-image: url('assets/doodle-1.png');
-  height: 165px;
-  width: 165px;
-}
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20%;
+  height: 20%;
+  top: -87%;
+  left: 20%;
+} */
 
 /* Doodle-2 */
-.image-container:nth-child(3)::before {
+/* .image-container:nth-child(3)::before {
+  position: absolute;
+  content: '';
+  display: block;
   background-image: url('assets/doodle-2.png');
-  width: 50%;
-  height: 100px;
-  top: 185px;
-  left: 30%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20%;
+  height: 20%;
+  top: -165%;
+  left: 40%;
+} */
+
+@media only screen and (min-width: 400px) {
+  .image-container:nth-child(1)::before {
+    position: absolute;
+    content: '';
+    display: block;
+    background-image: url('assets/saly-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    max-height: 430px;
+    top: -29%;
+    left: 0;
+  }
+
+  /* Doodle */
+  .image-container:nth-child(2)::before {
+    position: absolute;
+    content: '';
+    display: block;
+    background-image: url('assets/doodle-1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20%;
+    height: 20%;
+    top: -87%;
+    left: 10%;
+  }
+
+  /* Doodle-2 */
+  .image-container:nth-child(3)::before {
+    position: absolute;
+    content: '';
+    display: block;
+    background-image: url('assets/doodle-2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20%;
+    height: 15%;
+    top: -180%;
+    left: 34%;
+  }
 }

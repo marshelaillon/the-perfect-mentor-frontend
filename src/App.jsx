@@ -11,20 +11,20 @@ export default function App() {
         </h1>
       </header>
 
-      <main>
+      <main className="main-container">
         <div className="image-container"></div>
-        <div className="image-container"></div>
-        <div className="image-container"></div>
-
-        <div className="login-buttons-container absolute bottom-0 left-0 right-0 flex justify-center flex-col gap-2 p-6 mb-12">
-          <button className="bg-primary-dark py-5 rounded-full text-primary-white">
-            Sign up
-          </button>
-          <button className="py-5 rounded-full border-2 border-primary-dark font-bold text-primary-dark">
-            Log in
-          </button>
-        </div>
+        {/* <div className="image-container"></div>
+        <div className="image-container"></div> */}
       </main>
+
+      <div className="buttons-container flex flex-col gap-2">
+        <button className="bg-primary-dark rounded-full py-2 text-primary-white capitalize sign-up">
+          Sign up
+        </button>
+        <button className="border rounded-full py-2 capitalize text-primary-dark log-in">
+          log in
+        </button>
+      </div>
     </>
   );
 }

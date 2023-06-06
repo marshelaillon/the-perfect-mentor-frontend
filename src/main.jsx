@@ -7,7 +7,8 @@ import './index.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App>Hello, World</App>,
+    element: <App />,
+    //errorElement: <ErrorPage/>
   },
 ]);
 
