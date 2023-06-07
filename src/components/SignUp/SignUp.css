@@ -1,0 +1,19 @@
+.form-container {
+  width: 340px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.doodle-1 {
+  top: -55%;
+  left: 50%;
+  transform: rotate(-85deg);
+}
+
+.doodle-2 {
+  top: -65%;
+  left: 30%;
+}
