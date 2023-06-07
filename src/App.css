@@ -6,21 +6,40 @@ body {
   background-color: #bfd732;
   min-height: 100vh;
   font-family: 'Heebo';
-  padding: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
-.main-container {
-  max-height: 300px;
+.img-container {
+  width: 340px;
+  margin: 0 auto;
 }
+
+.doodle-2 {
+  position: absolute;
+  top: 26%;
+}
+
+.doodle-5 {
+  position: absolute;
+  top: 63%;
+  left: 26%;
+  transform: rotate(-1deg);
+}
+
+/* .main-container {
+  max-height: 300px;
+} */
 
 /* Contenedor de imágenes */
-.image-container {
+/* .image-container {
   position: relative;
   height: 500px;
-}
+} */
 
 /* Saly */
-.image-container:nth-child(1)::before {
+/* .image-container:nth-child(1)::before {
   position: absolute;
   content: '';
   display: block;
@@ -33,7 +52,7 @@ body {
   max-height: 410px;
   top: -23%;
   left: 0;
-}
+} */
 
 /* Doodle */
 /* .image-container:nth-child(2)::before {
@@ -63,7 +82,7 @@ body {
   left: 40%;
 } */
 
-@media only screen and (min-width: 400px) {
+/* @media only screen and (min-width: 400px) {
   .image-container:nth-child(1)::before {
     position: absolute;
     content: '';
@@ -77,10 +96,10 @@ body {
     max-height: 430px;
     top: -29%;
     left: 0;
-  }
+  } */
 
-  /* Doodle */
-  .image-container:nth-child(2)::before {
+/* Doodle */
+/* .image-container:nth-child(2)::before {
     position: absolute;
     content: '';
     display: block;
@@ -91,10 +110,10 @@ body {
     height: 20%;
     top: -87%;
     left: 10%;
-  }
+  } */
 
-  /* Doodle-2 */
-  .image-container:nth-child(3)::before {
+/* Doodle-2 */
+/* .image-container:nth-child(3)::before {
     position: absolute;
     content: '';
     display: block;
@@ -106,4 +125,4 @@ body {
     top: -180%;
     left: 34%;
   }
-}
+} */

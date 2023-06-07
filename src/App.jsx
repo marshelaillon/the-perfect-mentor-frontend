@@ -1,30 +1,33 @@
 import './App.css';
+import title from './assets/title.png';
+import doodle1 from './assets/doodle-1.png';
+import doodle2 from './assets/doodle-2.png';
+import saly from './assets/saly-1.png';
 
 export default function App() {
   return (
     <>
-      <header className="mb-8 pt-12">
-        <h1 className="font-base font-black uppercase text-5xl text-primary-dark ">
-          the <br />
-          perfect <br />
-          <span className="text-white">m</span>entor
-        </h1>
+      <header className="h-8 mt-6">
+        <img src={title} alt="The perfect mentor" />
       </header>
 
-      <main className="main-container">
-        <div className="image-container"></div>
-        {/* <div className="image-container"></div>
-        <div className="image-container"></div> */}
-      </main>
-
-      <div className="buttons-container flex flex-col gap-2">
-        <button className="bg-primary-dark rounded-full py-2 text-primary-white capitalize sign-up">
-          Sign up
-        </button>
-        <button className="border rounded-full py-2 capitalize text-primary-dark log-in">
-          log in
-        </button>
-      </div>
+      <form className="form" onSubmit={'handleSubmit'}>
+        {/* IMAGES */}
+        <div className="img-container relative">
+          <img className="max-w-full" src={saly} alt="img" />
+          <img className="doodle-2" src={doodle1} alt="img" />
+          <img className="doodle-5" src={doodle2} alt="img" />
+        </div>
+        {/* BUTTONS */}
+        <div className="flex flex-col justify-center gap-2">
+          <button className="capitalize py-5 bg-primary-dark text-primary-white rounded-full">
+            sign up
+          </button>
+          <button className="capitalize py-5 border rounded-full text-primary-dark">
+            log in
+          </button>
+        </div>
+      </form>
     </>
   );
 }
