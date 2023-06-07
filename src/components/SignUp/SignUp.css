@@ -8,12 +8,16 @@
 }
 
 .doodle-1 {
-  top: -55%;
-  left: 50%;
+  top: -40%;
+  left: 75%;
   transform: rotate(-85deg);
 }
 
 .doodle-2 {
-  top: -65%;
-  left: 30%;
+  top: -55%;
+  left: 45%;
+}
+
+.sign-up-borders {
+  border-radius: 2.5rem;
 }

@@ -16,28 +16,33 @@ export default function SignUp() {
   // });
 
   return (
-    <div className="form-container">
-      <div className="header-container relative">
+    <div className="form-container pt-20">
+      <div className="header-container relative place-self-start">
         <img src={title} alt="title image" className="mb-6" />
         <img src={doodle1} alt="icon image" className="absolute doodle-1" />
         <img src={doodle2} alt="icon image" className="absolute doodle-2" />
       </div>
-      <form className="flex flex-col gap-4">
-        <input
-          className="py-4 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full"
-          type="username"
-          placeholder="username"
-        />
-        <input
-          className="py-4 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full"
-          type="email"
-          placeholder="email"
-        />
-        <input
-          className="py-4 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full"
-          type="password"
-          placeholder="password"
-        />
+      <form className="flex flex-col gap-7">
+        <div className="flex flex-col gap-6 border-2 border-primary-dark p-8 sign-up-borders">
+          <h2 className="font-bold capitalize text-3xl text-primary-dark mb-4">
+            sign up
+          </h2>
+          <input
+            className="py-6 px-12 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full"
+            type="username"
+            placeholder="username"
+          />
+          <input
+            className="py-6 px-12 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full"
+            type="email"
+            placeholder="email"
+          />
+          <input
+            className="py-6 px-12 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full"
+            type="password"
+            placeholder="password"
+          />
+        </div>
         <button className="align-center bg-primary-dark text-primary-white py-4 rounded-full capitalize">
           sign up
         </button>
