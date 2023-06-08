@@ -5,19 +5,16 @@
 
 .doodle-2 {
   position: absolute;
-  top: 20%;
-  left: 20;
+  top: 15%;
 }
 
 .doodle-5 {
   position: absolute;
-  top: 66%;
+  top: 51%;
   left: 25%;
   transform: rotate(-7deg);
 }
 
 .btn-container {
-  position: absolute;
   width: 340px;
-  top: 77%;
 }

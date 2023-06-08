@@ -13,23 +13,23 @@ export default function Home() {
         <img className="max-w-full" src={saly} alt="img" />
         <img className="doodle-2" src={doodle1} alt="img" />
         <img className="doodle-5" src={doodle2} alt="img" />
-      </div>
-      <div className="flex flex-col gap-2 btn-container">
-        <Link
-          to="/signup"
-          className="capitalize py-5 text-center bg-primary-dark text-primary-white rounded-full"
-        >
-          sign up
-        </Link>
+        {/* BUTTONS */}
+        <div className="flex flex-col gap-2 btn-container">
+          <Link
+            to="/signup"
+            className="capitalize py-5 text-center bg-primary-dark text-primary-white rounded-full"
+          >
+            sign up
+          </Link>
 
-        <Link
-          to="/login"
-          className="capitalize py-5 text-center border-2 border-primary-dark font-bold rounded-full text-primary-dark"
-        >
-          log in
-        </Link>
+          <Link
+            to="/login"
+            className="capitalize py-5 text-center border-2 border-primary-dark font-bold rounded-full text-primary-dark"
+          >
+            log in
+          </Link>
+        </div>
       </div>
-      {/* BUTTONS */}
     </div>
   );
 }
