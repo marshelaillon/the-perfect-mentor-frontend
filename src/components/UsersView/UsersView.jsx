@@ -41,7 +41,9 @@ export default function UsersView() {
           {users.map(({ name, age, email, role, joined_date, verified }) => (
             <div
               key={name}
-              className={`p-4 mt-3 ${verified ? 'verified' : 'unverified'}`}
+              className={`p-4 mt-3 ${
+                verified ? 'verified' : 'unverified'
+              } text-primary-dark`}
             >
               <p className="font-bold ">
                 <span className="capitalize">{name}</span> | age {age}
