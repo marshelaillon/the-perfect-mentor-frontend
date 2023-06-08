@@ -16,7 +16,7 @@ export default function SignUp() {
   // });
 
   return (
-    <div className="form-container pt-14">
+    <div className="form-container">
       <div className="header-container relative place-self-start">
         <img src={title} alt="title image" className="mb-6" />
         <img
@@ -51,7 +51,7 @@ export default function SignUp() {
             placeholder="password"
           />
         </div>
-        <button className="align-center bg-primary-dark text-primary-white py-4 rounded-full capitalize">
+        <button className="align-center bg-primary-dark text-primary-white py-5 rounded-full capitalize">
           sign up
         </button>
       </form>

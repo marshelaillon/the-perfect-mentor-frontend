@@ -1,0 +1,77 @@
+.doodle-sm,
+.doodle-md {
+  position: absolute;
+}
+
+.doodle-sm {
+  top: -40%;
+  left: 25%;
+}
+
+.doodle-md {
+  top: -45%;
+  left: 35%;
+}
+
+.search-user-input-container {
+  position: absolute;
+  top: 68%;
+  left: 6%;
+}
+
+.main-header-container {
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.header-container {
+  width: 270px;
+}
+
+.main-container {
+  min-width: 100vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.users-container {
+  margin-top: 0px !important;
+  padding: 2rem 1rem;
+  width: 300px;
+}
+
+.verified,
+.unverified {
+  position: relative;
+  border-radius: 1.75rem;
+}
+
+.verified {
+  background-color: rgba(57, 181, 74, 0.1);
+}
+.unverified {
+  background-color: rgba(230, 21, 135, 0.1);
+}
+
+.verified::before,
+.unverified::before {
+  content: '';
+  position: absolute;
+  top: 22%;
+  bottom: 0;
+  width: 4px;
+  height: 55%;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.verified::before {
+  left: 0px;
+  background-color: #39b54a;
+}
+
+.unverified::before {
+  left: 0px;
+  background-color: #e61587;
+}
