@@ -6,7 +6,7 @@ import './Home.css';
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col justify-center align-middle pt-14">
       {/* IMAGES */}
       <div className="img-container relative">
         {/* Having this first picture without "absolute" positioning we can have space for the other images, so the buttons stay below */}

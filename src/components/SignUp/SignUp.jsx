@@ -16,11 +16,19 @@ export default function SignUp() {
   // });
 
   return (
-    <div className="form-container pt-20">
+    <div className="form-container pt-14">
       <div className="header-container relative place-self-start">
         <img src={title} alt="title image" className="mb-6" />
-        <img src={doodle1} alt="icon image" className="absolute doodle-1" />
-        <img src={doodle2} alt="icon image" className="absolute doodle-2" />
+        <img
+          src={doodle1}
+          alt="icon image"
+          className="absolute doodle-sign-up-1"
+        />
+        <img
+          src={doodle2}
+          alt="icon image"
+          className="absolute doodle-sign-up-2"
+        />
       </div>
       <form className="flex flex-col gap-7">
         <div className="flex flex-col gap-6 border-2 border-primary-dark p-8 sign-up-borders">
