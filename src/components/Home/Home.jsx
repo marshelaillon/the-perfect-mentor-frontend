@@ -22,7 +22,10 @@ export default function Home() {
           sign up
         </Link>
 
-        <Link className="capitalize py-5 text-center border-2 border-primary-dark font-bold rounded-full text-primary-dark">
+        <Link
+          to="/login"
+          className="capitalize py-5 text-center border-2 border-primary-dark font-bold rounded-full text-primary-dark"
+        >
           log in
         </Link>
       </div>
