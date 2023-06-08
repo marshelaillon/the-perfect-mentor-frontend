@@ -65,7 +65,9 @@ export default function SignUp() {
             </span>
           </div>
 
-          <Link className="pl-4">Forgot your password?</Link>
+          <Link to="/users" className="pl-4">
+            Forgot your password?
+          </Link>
         </div>
         <button className="align-center bg-primary-dark text-primary-white py-5 rounded-full capitalize">
           Sign In
