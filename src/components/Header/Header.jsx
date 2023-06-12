@@ -1,4 +1,5 @@
 import title from '../../assets/title.png';
+import './Header.css';
 
 export default function Header() {
   return (

@@ -4,13 +4,6 @@ import doodle3 from '../../assets/doodle-3-svg.svg';
 import searchIcon from '../../assets/search-icon.png';
 import './UsersView.css';
 
-// width: 340px;
-/*margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;*/
-
 export default function UsersView() {
   return (
     <>

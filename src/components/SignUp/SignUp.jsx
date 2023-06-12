@@ -64,7 +64,7 @@ export default function SignUp() {
             id="roles"
             className="bg-primary-yellow py-4 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full"
           >
-            <option value="null">-- Select an option --</option>
+            <option value="null">-- Select a role --</option>
             {!isLoading &&
               roles.map(({ id, name }) => (
                 <option key={id} value={id}>

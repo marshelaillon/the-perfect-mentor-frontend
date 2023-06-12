@@ -16,17 +16,17 @@
 .search-user-input-container {
   position: absolute;
   top: 68%;
-  left: 6%;
+  left: 9%;
 }
 
 .main-header-container {
-  min-width: 100vw;
+  width: 340px;
   display: flex;
   justify-content: center;
 }
 
 .header-container {
-  width: 270px;
+  width: 300px;
 }
 
 .main-container {

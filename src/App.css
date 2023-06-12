@@ -6,17 +6,16 @@ body {
   background-color: #bfd732;
   min-height: 100vh;
   font-family: 'Heebo';
-  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #root {
+  background-color: #bfd732;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: 100%;
-  width: 50%;
 }

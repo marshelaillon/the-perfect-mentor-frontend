@@ -1,0 +1,27 @@
+.profile-container {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.full-height {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-height > .user-data {
+  flex-grow: 1;
+}
+
+.profile-pic {
+  top: -3.5rem;
+  right: 1rem;
+  background-color: rgb(64, 237, 237);
+  border-radius: 6rem;
+  width: 7rem;
+}
+
+.input-shadow {
+  background-color: transparent;
+  box-shadow: 0 1px 2px -2px gray;
+}
