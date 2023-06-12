@@ -17,7 +17,7 @@ export default function MyProfile() {
 
   return (
     <div className="profile-container full-height">
-      <header className="h-20 pl-3 items-center bg-primary-yellow flex gap-4">
+      <header className="h-20 pl-3 items-center flex gap-4 bg-primary-yellow ">
         <h2 className="font-bold capitalize text-3xl text-primary-dark">
           profile
         </h2>
@@ -30,69 +30,72 @@ export default function MyProfile() {
       </header>
 
       {/* USER DATA */}
-      <div className="user-data bg-primary-white rounded-t-2xl  relative">
-        <img
-          src={profilePic}
-          alt="profile picture"
-          className="absolute profile-pic"
-        />
-        <form className="flex flex-col  p-4">
-          <label htmlFor="name" className="text-sm text-primary-gray mt-10">
-            Your name
-          </label>
-          <input
-            className="mb-4 input-shadow font-bold text-primary-dark outline-none"
-            id="name"
-            type="text"
-            disabled={disabled}
-            value={'David Gordon'}
+      <div className="user-data-container w-full ">
+        <div className="bg-primary-white rounded-t-2xl relative mx-4">
+          <img
+            src={profilePic}
+            alt="profile picture"
+            className="absolute profile-pic"
           />
+          <form className="flex flex-col  p-4 form-shadow">
+            <label htmlFor="name" className="text-sm text-primary-gray mt-10">
+              Your name
+            </label>
+            <input
+              className="mb-4 input-shadow font-bold text-primary-dark outline-none"
+              id="name"
+              type="text"
+              disabled={disabled}
+              value={'David Gordon'}
+            />
 
-          <label htmlFor="email" className="text-sm text-primary-gray">
-            Your email
-          </label>
-          <input
-            className="mb-4 input-shadow font-bold text-primary-dark outline-none"
-            id="email"
-            type="email"
-            disabled={disabled}
-            value={'davidgordon@gmail.com'}
-          />
+            <label htmlFor="email" className="text-sm text-primary-gray">
+              Your email
+            </label>
+            <input
+              className="mb-4 input-shadow font-bold text-primary-dark outline-none"
+              id="email"
+              type="email"
+              disabled={disabled}
+              value={'davidgordon@gmail.com'}
+            />
 
-          <label htmlFor="password" className="text-sm text-primary-gray">
-            Your password
-          </label>
-          <input
-            className="mb-4 input-shadow font-bold text-primary-dark outline-none"
-            id="password"
-            type="password"
-            disabled={disabled}
-            value={'davidgordon'}
-          />
+            <label htmlFor="password" className="text-sm text-primary-gray">
+              Your password
+            </label>
+            <input
+              className="mb-4 input-shadow font-bold text-primary-dark outline-none"
+              id="password"
+              type="password"
+              disabled={disabled}
+              value={'davidgordon'}
+            />
 
-          <label htmlFor="age" className="text-sm text-primary-gray">
-            Age
-          </label>
-          <input
-            className="mb-4 input-shadow font-bold text-primary-dark outline-none"
-            id="age"
-            type="number"
-            disabled={disabled}
-            value={'35'}
-          />
+            <label htmlFor="age" className="text-sm text-primary-gray">
+              Age
+            </label>
+            <input
+              className="mb-4 input-shadow font-bold text-primary-dark outline-none"
+              id="age"
+              type="number"
+              disabled={disabled}
+              value={'35'}
+            />
 
-          <label htmlFor="role" className="text-sm text-primary-gray">
-            Role
-          </label>
-          <input
-            className="mb-2 input-shadow font-bold text-primary-dark outline-none"
-            id="role"
-            type="text"
-            disabled={disabled}
-            value={'Mentor'}
-          />
-        </form>
+            <label htmlFor="role" className="text-sm text-primary-gray">
+              Role
+            </label>
+            <input
+              className="mb-2 input-shadow font-bold text-primary-dark outline-none"
+              id="role"
+              type="text"
+              disabled={disabled}
+              value={'Mentor'}
+            />
+          </form>
+        </div>
       </div>
+
       <div className="bg-primary-dark flex justify-around pt-5 pb-8 rounded-t-3xl nav-container">
         <button className="cursor-pointer nav-button-icon">
           <img src={addIcon} alt="social icon" />

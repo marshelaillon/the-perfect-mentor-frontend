@@ -4,6 +4,26 @@
   background-color: white;
 }
 
+.form-shadow {
+  box-shadow: 0 1px 2px -2px gray;
+}
+
+.user-data-container {
+  position: relative;
+}
+
+.user-data-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background-color: #bfd732;
+  border-bottom-left-radius: 1.325rem;
+  border-bottom-right-radius: 1.325rem;
+}
+
 .full-height {
   display: flex;
   flex-direction: column;
