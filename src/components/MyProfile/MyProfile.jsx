@@ -30,8 +30,8 @@ export default function MyProfile() {
       </header>
 
       {/* USER DATA */}
-      <div className="user-data-container w-full flex-grow">
-        <div className="bg-primary-white rounded-t-2xl relative mx-4">
+      <div className="user-data-container w-full flex-grow flex">
+        <div className="bg-white rounded-t-2xl relative mx-4 flex-grow shadow">
           <img
             src={profilePic}
             alt="profile picture"
@@ -42,7 +42,7 @@ export default function MyProfile() {
               Your name
             </label>
             <input
-              className="mb-4 input-shadow font-bold text-primary-dark outline-none"
+              className="mb-4 shadow font-bold text-primary-dark outline-none"
               id="name"
               type="text"
               disabled={disabled}
@@ -53,7 +53,7 @@ export default function MyProfile() {
               Your email
             </label>
             <input
-              className="mb-4 input-shadow font-bold text-primary-dark outline-none"
+              className="mb-4 shadow font-bold text-primary-dark outline-none"
               id="email"
               type="email"
               disabled={disabled}
@@ -64,7 +64,7 @@ export default function MyProfile() {
               Your password
             </label>
             <input
-              className="mb-4 input-shadow font-bold text-primary-dark outline-none"
+              className="mb-4 shadow font-bold text-primary-dark outline-none"
               id="password"
               type="password"
               disabled={disabled}
@@ -75,7 +75,7 @@ export default function MyProfile() {
               Age
             </label>
             <input
-              className="mb-4 input-shadow font-bold text-primary-dark outline-none"
+              className="mb-4 shadow font-bold text-primary-dark outline-none"
               id="age"
               type="number"
               disabled={disabled}
@@ -86,7 +86,7 @@ export default function MyProfile() {
               Role
             </label>
             <input
-              className="mb-2 input-shadow font-bold text-primary-dark outline-none"
+              className="mb-3 shadow font-bold text-primary-dark outline-none"
               id="role"
               type="text"
               disabled={disabled}

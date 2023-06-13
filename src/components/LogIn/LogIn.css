@@ -1,3 +1,8 @@
+.login-title {
+  margin-bottom: 1rem;
+  max-width: 60%;
+}
+
 .form-container {
   width: 340px;
   margin: 0 auto;
@@ -7,15 +12,15 @@
   align-items: center;
 }
 
-.doodle-sign-up-1 {
-  top: -40%;
-  left: 75%;
+.doodle-login-1 {
+  top: -120%;
+  left: 45%;
   transform: rotate(-85deg);
 }
 
-.doodle-sign-up-2 {
-  top: -55%;
-  left: 45%;
+.doodle-login-2 {
+  top: -105%;
+  left: 30%;
 }
 
 .sign-up-borders {
