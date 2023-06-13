@@ -5,10 +5,10 @@ import doodle2 from '../../assets/doodle-2.png';
 import emailIcon from '../../assets/email-icon.png';
 import passwordIcon from '../../assets/password-icon.png';
 import './SignUp.css';
-import { useGetRolesQuery } from '../../services/thePerfectMentorApi';
+//import { useGetRolesQuery } from '../../services/thePerfectMentorApi';
 
 export default function SignUp() {
-  const { data: roles, isLoading } = useGetRolesQuery();
+  //const { data: roles, isLoading } = useGetRolesQuery();
   // const formik = useFormik({
   //   initialValues: {
   //     email: '',
@@ -83,13 +83,13 @@ export default function SignUp() {
             id="roles"
             className="bg-primary-yellow py-3 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full text-primary-gray"
           >
-            <option value="null">-- Select a role --</option>
+            {/* <option value="null">-- Select a role --</option>
             {!isLoading &&
               roles.map(({ id, name }) => (
                 <option key={id} value={id}>
                   {name[0].toUpperCase() + name.slice(1)}
                 </option>
-              ))}
+              ))} */}
           </select>
         </div>
         <button className="align-center bg-primary-dark text-primary-white py-3 rounded-full capitalize">
