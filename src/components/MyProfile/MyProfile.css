@@ -29,10 +29,6 @@
   flex-direction: column;
 }
 
-.full-height > .user-data {
-  flex-grow: 1;
-}
-
 .profile-pic {
   top: -3.5rem;
   right: 1rem;

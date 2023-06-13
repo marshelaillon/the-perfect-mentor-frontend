@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.saly {
+  aspect-ratio: 9 / 9;
+}
+
 .doodle-2 {
   position: absolute;
   top: 15%;

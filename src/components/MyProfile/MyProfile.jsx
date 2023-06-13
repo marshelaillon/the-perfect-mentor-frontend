@@ -30,7 +30,7 @@ export default function MyProfile() {
       </header>
 
       {/* USER DATA */}
-      <div className="user-data-container w-full ">
+      <div className="user-data-container w-full flex-grow">
         <div className="bg-primary-white rounded-t-2xl relative mx-4">
           <img
             src={profilePic}

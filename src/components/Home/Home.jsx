@@ -6,10 +6,10 @@ import './Home.css';
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center align-middle pt-14 img-container relative">
+    <div className="flex flex-col justify-center align-middle pt-8 img-container relative mb-4">
       {/* IMAGES */}
       {/* Having this first picture without "absolute" positioning we can have space for the other images, so the buttons stay below */}
-      <img className="max-w-full" src={saly} alt="img" />
+      <img className="max-w-full saly" src={saly} alt="img" />
       <img className="doodle-2" src={doodle1} alt="img" />
       <img className="doodle-5" src={doodle2} alt="img" />
 
@@ -23,7 +23,7 @@ export default function Home() {
         </Link>
 
         <Link
-          to="/profile"
+          to="/login"
           className="capitalize py-5 text-center border-2 border-primary-dark font-bold rounded-full text-primary-dark"
         >
           log in
