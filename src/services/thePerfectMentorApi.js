@@ -9,7 +9,15 @@ export const thePerfectMentorApi = createApi({
     getRoles: builder.query({
       query: () => `${LOCAL}/api/v1/role`,
     }),
+    registerUser: builder.mutation({
+      query: userData => ({
+        url: `${LOCAL}/api/v1/user`,
+        method: 'POST',
+        body: userData,
+      }),
+    }),
   }),
 });
 
-export const { useGetRolesQuery } = thePerfectMentorApi;
+export const { useGetRolesQuery, useRegisterUserMutation } =
+  thePerfectMentorApi;

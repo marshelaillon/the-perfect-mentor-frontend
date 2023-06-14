@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import title from '../../assets/title.png';
 import doodle1 from '../../assets/doodle-1.png';
@@ -5,10 +6,36 @@ import doodle2 from '../../assets/doodle-2.png';
 import emailIcon from '../../assets/email-icon.png';
 import passwordIcon from '../../assets/password-icon.png';
 import './SignUp.css';
-import { useGetRolesQuery } from '../../services/thePerfectMentorApi';
+import {
+  useGetRolesQuery,
+  useRegisterUserMutation,
+} from '../../services/thePerfectMentorApi';
+import { Link } from 'react-router-dom';
 
 export default function SignUp() {
-  const { data: roles, isLoading } = useGetRolesQuery();
+  const { data: roles, isLoading: areRolesLoading } = useGetRolesQuery();
+  const [registerUser, { isSuccess }] = useRegisterUserMutation();
+  const [confirmationEmailLink, setConfirmationEmailLink] = useState('');
+
+  if (isSuccess) {
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <div>
+          <p className="text-primary-dark">
+            {`We've sent you an email confirmation, please check it out:`}
+          </p>
+          <Link
+            to={confirmationEmailLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-dark"
+          >
+            {confirmationEmailLink}
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="sign-form-container gap-1">
@@ -33,8 +60,20 @@ export default function SignUp() {
           confirmPassword: '',
           roleId: '',
         }}
-        onSubmit={(values, { resetForm }) => {
-          console.log(values);
+        onSubmit={async (values, { resetForm }) => {
+          try {
+            const res = await registerUser({
+              email: values.email,
+              password: values.password,
+              passwordConfirmation: values.confirmPassword,
+              role: values.roleId,
+            });
+            if (res?.data?.ok) {
+              setConfirmationEmailLink(res.data.url);
+            }
+          } catch (error) {
+            console.log(error.message);
+          }
           resetForm();
         }}
         validate={values => {
@@ -120,7 +159,7 @@ export default function SignUp() {
                 value={values.roleId}
               >
                 <option value="">-- Select a role --</option>
-                {!isLoading &&
+                {!areRolesLoading &&
                   roles.map(({ _id, name }) => (
                     <option key={_id} value={_id}>
                       {name[0].toUpperCase() + name.slice(1)}
