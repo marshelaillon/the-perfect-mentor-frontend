@@ -20,7 +20,7 @@ export default function SignUp() {
   if (isSuccess) {
     return (
       <div className="flex flex-col items-center justify-center">
-        <div>
+        <div className="p-6">
           <p className="text-primary-dark">
             {`We've sent you an email confirmation, please check it out:`}
           </p>
