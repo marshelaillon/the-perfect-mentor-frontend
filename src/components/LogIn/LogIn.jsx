@@ -1,25 +1,44 @@
 import { useEffect } from 'react';
 import { Formik, Field, Form } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLoginUserMutation } from '../../services/thePerfectMentorApi';
+import {
+  useGetMeQuery,
+  useLoginUserMutation,
+} from '../../services/thePerfectMentorApi';
 import { setTokens } from '../../app/features/authSlice';
+import { setUser } from '../../app/features/userSlice';
 import title from '../../assets/title.png';
 import doodle1 from '../../assets/doodle-1.png';
 import doodle2 from '../../assets/doodle-2.png';
 import emailIcon from '../../assets/email-icon.png';
 import passwordIcon from '../../assets/password-icon.png';
 import './LogIn.css';
+import '../../styles/loader.css';
 
-export default function SignUp() {
+export default function LogIn() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loginUser] = useLoginUserMutation();
-  const { accessToken, refreshToken } = useSelector(state => state.auth);
+  const { accessToken } = useSelector(state => state.auth);
+  const {
+    data,
+    isLoading,
+    isSuccess: isGetMeSuccess,
+  } = useGetMeQuery(undefined, {
+    skip: accessToken ? false : true,
+  });
 
   useEffect(() => {
-    // console.log('accessToken', accessToken);
-    // console.log('refreshToken', refreshToken);
-  }, [accessToken, refreshToken]);
+    if (accessToken && isGetMeSuccess) {
+      dispatch(setUser(data));
+      navigate('/profile');
+    }
+  }, [accessToken, isGetMeSuccess, data, dispatch, navigate]);
+
+  if (isLoading) {
+    return <p className="loader"></p>;
+  }
 
   return (
     <div className="form-container mt-10">
@@ -84,6 +103,7 @@ export default function SignUp() {
                 type="email"
                 placeholder="email"
                 name="email"
+                autoComplete="username"
               />
               <span className="absolute top-2 left-2 bg-primary-white p-3 rounded-full">
                 <img src={emailIcon} alt="email icon" />
@@ -96,6 +116,7 @@ export default function SignUp() {
                 type="password"
                 placeholder="password"
                 name="password"
+                autoComplete="current-password"
               />
 
               <span className="absolute top-2 left-2 bg-primary-white p-3 rounded-full">

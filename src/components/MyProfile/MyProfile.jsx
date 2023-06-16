@@ -1,15 +1,18 @@
 import { useState } from 'react';
+//import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import editIcon from '../../assets/editIcon.svg';
 import profilePic from '../../assets/profile.svg';
 import addIcon from '../../assets/addIcon.svg';
 import statsIcon from '../../assets/statsIcon.svg';
 import notesIcon from '../../assets/notesIcon.svg';
-import { useLocation } from 'react-router-dom';
 import './MyProfile.css';
+import '../../styles/loader.css';
 
 export default function MyProfile() {
   const [disabled, setDisabled] = useState(true);
   const { pathname } = useLocation();
+  //const user = useSelector(state => state.user);
 
   const activateEdit = () => {
     setDisabled(prevState => !prevState);
