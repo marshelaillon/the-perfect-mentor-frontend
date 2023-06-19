@@ -32,3 +32,8 @@
   border-radius: 6rem;
   width: 7rem;
 }
+
+.my-profile-nav {
+  top: -50%;
+  right: 12%;
+}

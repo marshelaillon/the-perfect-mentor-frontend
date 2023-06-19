@@ -11,7 +11,6 @@ export const thePerfectMentorApi = createApi({
       if (accessToken) {
         headers.set('Authorization', `Bearer ${accessToken}`);
       }
-      headers.set('Content-Type', 'application/json');
       return headers;
     },
   }),

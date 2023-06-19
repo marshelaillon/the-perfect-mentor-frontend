@@ -1,6 +1,7 @@
 import { useState } from 'react';
-//import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { clearTokens } from '../../app/features/authSlice';
 import editIcon from '../../assets/editIcon.svg';
 import profilePic from '../../assets/profile.svg';
 import addIcon from '../../assets/addIcon.svg';
@@ -8,15 +9,26 @@ import statsIcon from '../../assets/statsIcon.svg';
 import notesIcon from '../../assets/notesIcon.svg';
 import './MyProfile.css';
 import '../../styles/loader.css';
+import { clearUserData } from '../../app/features/userSlice';
 
 export default function MyProfile() {
-  const [disabled, setDisabled] = useState(true);
+  const [editing, setIsEditing] = useState(false);
   const { pathname } = useLocation();
-  //const user = useSelector(state => state.user);
+  const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const activateEdit = () => {
-    setDisabled(prevState => !prevState);
+    setIsEditing(prevState => !prevState);
   };
+
+  const clearData = () => {
+    dispatch(clearTokens());
+    dispatch(clearUserData());
+    navigate('/');
+  };
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <div className="profile-container full-height">
@@ -48,8 +60,8 @@ export default function MyProfile() {
               className="mb-4 shadow font-bold text-primary-dark outline-none"
               id="name"
               type="text"
-              disabled={disabled}
-              value={'David Gordon'}
+              disabled={!editing}
+              value={user?.name}
             />
 
             <label htmlFor="email" className="text-sm text-primary-gray">
@@ -59,8 +71,8 @@ export default function MyProfile() {
               className="mb-4 shadow font-bold text-primary-dark outline-none"
               id="email"
               type="email"
-              disabled={disabled}
-              value={'davidgordon@gmail.com'}
+              disabled={!editing}
+              value={user?.email}
             />
 
             <label htmlFor="password" className="text-sm text-primary-gray">
@@ -70,8 +82,8 @@ export default function MyProfile() {
               className="mb-4 shadow font-bold text-primary-dark outline-none"
               id="password"
               type="password"
-              disabled={disabled}
-              value={'davidgordon'}
+              disabled={!editing}
+              value={user?.password}
             />
 
             <label htmlFor="age" className="text-sm text-primary-gray">
@@ -81,8 +93,8 @@ export default function MyProfile() {
               className="mb-4 shadow font-bold text-primary-dark outline-none"
               id="age"
               type="number"
-              disabled={disabled}
-              value={'35'}
+              disabled={!editing}
+              value={user?.age}
             />
 
             <label htmlFor="role" className="text-sm text-primary-gray">
@@ -92,24 +104,30 @@ export default function MyProfile() {
               className="mb-3 shadow font-bold text-primary-dark outline-none"
               id="role"
               type="text"
-              disabled={disabled}
-              value={'Mentor'}
+              disabled={!editing}
+              value={user?.role?.name}
             />
           </form>
         </div>
       </div>
 
-      <div className="bg-primary-dark flex justify-around pt-5 pb-8 rounded-t-3xl nav-container">
+      <div className="bg-primary-dark flex justify-around pt-5 pb-8 rounded-t-3xl nav-container relative">
         <button className="cursor-pointer nav-button-icon">
           <img src={addIcon} alt="social icon" />
         </button>
+
         <button className="cursor-pointer nav-button-icon">
           <img src={statsIcon} alt="stats icon" />
         </button>
+
         <button className="cursor-pointer nav-button-icon">
           <img src={notesIcon} alt="notes icon" />
         </button>
-        <button className="cursor-pointer">
+
+        <button
+          className="cursor-pointer dropdown"
+          onClick={() => setDropdownOpen(!dropdownOpen)}
+        >
           <svg
             width="24"
             height="24"
@@ -137,6 +155,18 @@ export default function MyProfile() {
             />
           </svg>
         </button>
+
+        {dropdownOpen && (
+          <nav className="absolute bg-primary-dark  right my-profile-nav rounded-t-md">
+            <ul className="flex flex-col">
+              <li className="px-3 py-2">
+                <button onClick={clearData} className="text-primary-white">
+                  Log out
+                </button>
+              </li>
+            </ul>
+          </nav>
+        )}
       </div>
     </div>
   );

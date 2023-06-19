@@ -25,9 +25,7 @@ export default function LogIn() {
     data,
     isLoading,
     isSuccess: isGetMeSuccess,
-  } = useGetMeQuery(undefined, {
-    skip: accessToken ? false : true,
-  });
+  } = useGetMeQuery(undefined, { skip: accessToken ? false : true });
 
   useEffect(() => {
     if (accessToken && isGetMeSuccess) {
