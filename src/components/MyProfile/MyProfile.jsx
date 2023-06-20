@@ -1,34 +1,19 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { clearTokens } from '../../app/features/authSlice';
+import { useSelector } from 'react-redux';
+import { NavigationBar } from '../index';
 import editIcon from '../../assets/editIcon.svg';
 import profilePic from '../../assets/profile.svg';
-import addIcon from '../../assets/addIcon.svg';
-import statsIcon from '../../assets/statsIcon.svg';
-import notesIcon from '../../assets/notesIcon.svg';
 import './MyProfile.css';
 import '../../styles/loader.css';
-import { clearUserData } from '../../app/features/userSlice';
 
 export default function MyProfile() {
   const [editing, setIsEditing] = useState(false);
-  const { pathname } = useLocation();
+
   const user = useSelector(state => state.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const activateEdit = () => {
     setIsEditing(prevState => !prevState);
   };
-
-  const clearData = () => {
-    dispatch(clearTokens());
-    dispatch(clearUserData());
-    navigate('/');
-  };
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <div className="profile-container full-height">
@@ -111,7 +96,9 @@ export default function MyProfile() {
         </div>
       </div>
 
-      <div className="bg-primary-dark flex justify-around pt-5 pb-8 rounded-t-3xl nav-container relative">
+      <NavigationBar />
+
+      {/* <div className="bg-primary-dark flex justify-around pt-5 pb-8 rounded-t-3xl nav-container relative">
         <button className="cursor-pointer nav-button-icon">
           <img src={addIcon} alt="social icon" />
         </button>
@@ -167,7 +154,7 @@ export default function MyProfile() {
             </ul>
           </nav>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
