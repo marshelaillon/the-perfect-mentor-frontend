@@ -1,10 +1,31 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useGetMeQuery } from '../../services/thePerfectMentorApi';
+import { setUser } from '../../app/features/userSlice';
 import doodle1 from '../../assets/doodle-1.png';
 import doodle2 from '../../assets/doodle-2.png';
 import saly from '../../assets/saly-1.png';
 import './Home.css';
+import '../../styles/loader.css';
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { accessToken } = useSelector(state => state.auth);
+  const { data, isLoading, isSuccess } = useGetMeQuery(undefined, {
+    skip: accessToken ? false : true,
+  });
+
+  useEffect(() => {
+    if (accessToken && isSuccess) {
+      dispatch(setUser(data));
+      navigate('/profile');
+    }
+  }, [data, dispatch, isSuccess, navigate, accessToken]);
+
+  if (isLoading) return <p className="loader"></p>;
+
   return (
     <div className="flex flex-col justify-center align-middle pt-8 img-container relative mb-4">
       {/* IMAGES */}

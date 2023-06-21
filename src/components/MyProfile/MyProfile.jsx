@@ -18,9 +18,7 @@ export default function MyProfile() {
   };
 
   useEffect(() => {
-    if (isSuccess) {
-      dispatch(setUser(user));
-    }
+    if (isSuccess) dispatch(setUser(user));
   }, [user, dispatch, isSuccess]);
 
   if (isLoading) return <p className="loader"></p>;
