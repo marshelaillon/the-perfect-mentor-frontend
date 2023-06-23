@@ -35,6 +35,13 @@ export const thePerfectMentorApi = createApi({
     getMe: builder.query({
       query: () => `${VITE_LOCAL_API_URL}/api/v1/user/me`,
     }),
+    updateUserData: builder.mutation({
+      query: newData => ({
+        url: `${VITE_LOCAL_API_URL}/api/v1/user/login`,
+        method: 'POST',
+        body: newData,
+      }),
+    }),
   }),
 });
 
@@ -43,4 +50,5 @@ export const {
   useRegisterUserMutation,
   useLoginUserMutation,
   useGetMeQuery,
+  useUpdateUserDataMutation,
 } = thePerfectMentorApi;
