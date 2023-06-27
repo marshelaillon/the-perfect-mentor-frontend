@@ -66,7 +66,7 @@ export default function LogIn() {
               dispatch(
                 setTokens({
                   accessToken: res.data.accessToken,
-                  refreshToken: res.data.accessToken,
+                  refreshToken: res.data.refreshToken,
                 })
               );
             }

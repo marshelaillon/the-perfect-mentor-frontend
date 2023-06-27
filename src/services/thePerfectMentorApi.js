@@ -1,19 +1,64 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { clearTokens, setTokens } from '../app/features/authSlice';
 
 const { VITE_LOCAL_API_URL } = import.meta.env;
 
+const baseQuery = fetchBaseQuery({
+  baseUrl: VITE_LOCAL_API_URL,
+  prepareHeaders: (headers, { getState }) => {
+    const accessToken = getState().auth.accessToken;
+    if (accessToken) {
+      headers.set('authorization', `Bearer ${accessToken}`);
+    } else {
+      headers.set('authorization', null);
+    }
+    return headers;
+  },
+});
+
+const baseQueryWithReAuth = async (args, api, extraOptions) => {
+  let result = await baseQuery(args, api, extraOptions);
+
+  if (result?.error?.originalStatus === 401) {
+    console.log('sending refresh token');
+    // send refresh token to get new access token
+    const state = api.getState();
+    const { refreshToken } = state.auth;
+
+    const refreshOptions = {
+      url: '/api/v1/sessions/refresh',
+      method: 'POST',
+      headers: {},
+    };
+
+    // Only add 'x-refresh' header if refreshToken is available
+    if (refreshToken) {
+      refreshOptions.headers = {
+        ...refreshOptions.headers,
+        'x-refresh': refreshToken,
+      };
+    }
+
+    const refreshResult = await baseQuery(refreshOptions, api, extraOptions);
+
+    console.log(refreshResult);
+    if (refreshResult?.data) {
+      // store the new token
+      api.dispatch(setTokens({ ...refreshResult.data, refreshToken: '123' }));
+      // retry the original query with new access token
+      result = await baseQuery(args, api, extraOptions);
+    } else {
+      api.dispatch(clearTokens());
+      // args.headers.authorization = null;
+    }
+  }
+
+  return result;
+};
+
 export const thePerfectMentorApi = createApi({
   reducerPath: 'thePerfectMentorApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: VITE_LOCAL_API_URL,
-    prepareHeaders: (headers, { getState }) => {
-      const { accessToken } = getState().auth;
-      if (accessToken) {
-        headers.set('Authorization', `Bearer ${accessToken}`);
-      }
-      return headers;
-    },
-  }),
+  baseQuery: baseQueryWithReAuth,
   endpoints: builder => ({
     getRoles: builder.query({
       query: () => `${VITE_LOCAL_API_URL}/api/v1/role`,
@@ -38,7 +83,7 @@ export const thePerfectMentorApi = createApi({
     updateUserData: builder.mutation({
       query: newData => ({
         url: `${VITE_LOCAL_API_URL}/api/v1/user/login`,
-        method: 'POST',
+        method: 'PATCH',
         body: newData,
       }),
     }),

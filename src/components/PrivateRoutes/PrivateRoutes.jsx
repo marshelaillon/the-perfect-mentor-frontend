@@ -1,8 +1,11 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useGetMeQuery } from '../../services/thePerfectMentorApi';
+import { useEffect } from 'react';
 
 export default function PrivateRoutes() {
-  const { accessToken } = useSelector(state => state.auth);
+  const { isSuccess } = useGetMeQuery();
 
-  return accessToken ? <Outlet /> : <Navigate to="/login" />;
+  useEffect(() => {}, [isSuccess]);
+
+  return isSuccess ? <Outlet /> : <Navigate to="/login" />;
 }
