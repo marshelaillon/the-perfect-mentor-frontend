@@ -1,5 +1,7 @@
 import { Form, Field } from 'formik';
 
+import '../../../styles/selectArrow.css';
+
 export default function UserDataContainer({
   values,
   profilePic,
@@ -77,7 +79,7 @@ export default function UserDataContainer({
             as="select"
             name="role"
             id="role"
-            className="bg-primary-yellow py-3 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full text-primary-gray"
+            className="bg-primary-yellow py-3 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full text-primary-gray select-arrow mt-1"
             disabled={!isEditing}
             onChange={handleChange}
             onBlur={handleBlur}

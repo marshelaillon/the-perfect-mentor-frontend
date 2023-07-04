@@ -6,6 +6,8 @@ import doodle1 from '../../assets/doodle-1.png';
 import doodle2 from '../../assets/doodle-2.png';
 import emailIcon from '../../assets/email-icon.png';
 import passwordIcon from '../../assets/password-icon.png';
+import '../../styles/selectArrow.css';
+import '../../styles/loader.css';
 import './SignUp.css';
 import {
   useGetRolesQuery,
@@ -14,8 +16,10 @@ import {
 
 export default function SignUp() {
   const { data: roles, isLoading: areRolesLoading } = useGetRolesQuery();
-  const [registerUser, { isSuccess }] = useRegisterUserMutation();
+  const [registerUser, { isSuccess, isLoading }] = useRegisterUserMutation();
   const [confirmationEmailLink, setConfirmationEmailLink] = useState('');
+
+  if (isLoading) return <p className="loader"></p>;
 
   if (isSuccess) {
     return (
@@ -33,6 +37,11 @@ export default function SignUp() {
             {confirmationEmailLink}
           </Link>
         </div>
+
+        <br />
+        <Link to="/login" className="text-primary-dark text-lg text-center">
+          Go to login
+        </Link>
       </div>
     );
   }
@@ -153,7 +162,7 @@ export default function SignUp() {
                 as="select"
                 name="roleId"
                 id="roleId"
-                className="bg-primary-yellow py-3 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full text-primary-gray"
+                className="bg-primary-yellow py-3 px-8 outline-none bg-transparent border-2 border-primary-dark placeholder-primary-gray rounded-full text-primary-gray select-arrow"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.roleId}

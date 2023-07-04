@@ -2,30 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: {
-    _id: '',
-    email: '',
-    role: '',
-    createdAt: '',
-    iat: '',
-    exp: '',
-  },
+  initialState: {},
   reducers: {
     setUser: (state, action) => {
-      state._id = action.payload._id;
-      state.email = action.payload.email;
-      state.role = action.payload.role;
-      state.createdAt = action.payload.createdAt;
-      state.iat = action.payload.iat;
-      state.exp = action.payload.exp;
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
     clearUserData: state => {
-      state._id = '';
-      state.email = '';
-      state.role = '';
-      state.createdAt = '';
-      state.iat = '';
-      state.exp = '';
+      return {};
     },
   },
 });

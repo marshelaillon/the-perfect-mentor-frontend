@@ -39,17 +39,19 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
       };
     }
 
-    const refreshResult = await baseQuery(refreshOptions, api, extraOptions);
+    const { data: newAccessToken } = await baseQuery(
+      refreshOptions,
+      api,
+      extraOptions
+    );
 
-    if (refreshResult?.data) {
-      console.log('REFRESH RESULT DATA: ', refreshResult?.data);
+    if (newAccessToken) {
       // store the new token
-      api.dispatch(setTokens({ ...refreshResult.data, refreshToken }));
+      api.dispatch(setTokens({ newAccessToken, refreshToken }));
       // retry the original query with new access token
       result = await baseQuery(args, api, extraOptions);
     } else {
       api.dispatch(clearTokens());
-      //window.location.href = '/';
     }
   }
 

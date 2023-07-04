@@ -13,6 +13,7 @@ import {
 } from '../../services/thePerfectMentorApi';
 import { setUser } from '../../app/features/userSlice';
 import { setTokens } from '../../app/features/authSlice';
+import { alertUpdatedCorrectly } from '../../utils/sweetAlert';
 
 import profilePic from '../../assets/profile.svg';
 
@@ -21,24 +22,26 @@ import '../../styles/loader.css';
 
 export default function MyProfile() {
   const [isEditing, setIsEditing] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const dispatch = useDispatch();
-  const { data: user, isLoading, isSuccess } = useGetMeQuery();
+  const { data: user, isLoading, isSuccess, refetch } = useGetMeQuery();
   const { data: roles, isSuccess: AreRolesSucceeded } = useGetRolesQuery();
   const { accessToken } = useSelector(state => state.auth);
 
-  useEffect(() => {
-    if (isSuccess) setUser(user);
-  }, [user, dispatch, isSuccess, accessToken]);
+  const [initialValues, setInitialValues] = useState({
+    name: user?.name || '',
+    lastname: user?.lastname || '',
+    email: user?.email,
+    role: user?.role._id || '',
+  });
 
-  const initialValues = {
-    name: user.name || '',
-    lastname: user.lastname || '',
-    email: user.email,
-    role: user.role._id || '',
-  };
+  useEffect(() => {
+    refetch();
+  }, [accessToken]);
 
   const handleSubmit = async values => {
     try {
+      setIsUpdating(true);
       const res = await updateUserData(
         {
           name: values.name,
@@ -49,17 +52,26 @@ export default function MyProfile() {
         accessToken
       );
       if (res?.ok) {
-        dispatch(setUser(res.user));
         dispatch(
           setTokens({
             accessToken: res.accessToken,
             refreshToken: res.refreshToken,
           })
         );
+        dispatch(setUser(res.user));
+        setInitialValues({
+          name: res.user?.name,
+          lastname: res.user?.lastname,
+          email: res.user?.email,
+          role: res.user?.role._id,
+        });
+        alertUpdatedCorrectly();
       }
       setIsEditing(false);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsUpdating(false);
     }
   };
 
@@ -81,7 +93,7 @@ export default function MyProfile() {
     setIsEditing(true);
   };
 
-  if (isLoading) return <p className="loader"></p>;
+  if (isLoading || isUpdating) return <p className="loader"></p>;
 
   return isSuccess ? (
     <Formik
