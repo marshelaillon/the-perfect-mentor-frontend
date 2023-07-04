@@ -42,15 +42,14 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
     const refreshResult = await baseQuery(refreshOptions, api, extraOptions);
 
     if (refreshResult?.data) {
-      console.log(refreshResult?.data, 'REFRESH RESULT DATA');
+      console.log('REFRESH RESULT DATA: ', refreshResult?.data);
       // store the new token
-      api.dispatch(setTokens({ ...refreshResult.data, refreshToken: '123' }));
+      api.dispatch(setTokens({ ...refreshResult.data, refreshToken }));
       // retry the original query with new access token
       result = await baseQuery(args, api, extraOptions);
     } else {
       api.dispatch(clearTokens());
-      window.location.href = '/';
-      // args.headers.authorization = null;
+      //window.location.href = '/';
     }
   }
 

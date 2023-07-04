@@ -8,6 +8,7 @@ import {
   updateUserData,
 } from '../../services/thePerfectMentorApi';
 import { setUser } from '../../app/features/userSlice';
+import { setTokens } from '../../app/features/authSlice';
 import editIcon from '../../assets/editIcon.svg';
 import profilePic from '../../assets/profile.svg';
 import './MyProfile.css';
@@ -25,8 +26,8 @@ export default function MyProfile() {
   };
 
   useEffect(() => {
-    if (isSuccess) dispatch(setUser(user));
-  }, [user, dispatch, isSuccess]);
+    if (isSuccess) setUser(user);
+  }, [user, dispatch, isSuccess, accessToken]);
 
   if (isLoading) return <p className="loader"></p>;
 
@@ -35,7 +36,7 @@ export default function MyProfile() {
       initialValues={{
         name: user.name || '',
         email: user.email,
-        password: 'Changeyourpasswordhere1$',
+        //password: '',
         age: user.age || '',
         roleId: user.role._id,
       }}
@@ -45,7 +46,7 @@ export default function MyProfile() {
             {
               name: values.name,
               email: values.email,
-              password: values.password,
+              //password: values.password,
               age: values.age,
               roleId: values.roleId,
             },
@@ -53,10 +54,15 @@ export default function MyProfile() {
             accessToken
           );
           if (res?.ok) {
-            setUser(res?.data);
-            console.log('RES DATA OK', res?.data);
+            //console.log('RES DATA OK', res);
+            dispatch(setUser(res.user));
+            dispatch(
+              setTokens({
+                accessToken: res.accessToken,
+                refreshToken: res.refreshToken,
+              })
+            );
           }
-          console.log(values);
           setIsEditing(false);
         } catch (error) {
           console.log(error);
@@ -67,9 +73,9 @@ export default function MyProfile() {
         if (!values.name) {
           errors.requiredName = 'Enter your name';
         }
-        if (!values.password) {
-          errors.requiredPassword = 'Enter a password';
-        }
+        // if (!values.password) {
+        //   errors.requiredPassword = 'Enter a password';
+        // }
         if (!values.email) {
           errors.requiredEmail = 'Enter your email';
         }
@@ -181,7 +187,7 @@ export default function MyProfile() {
                   </p>
                 )}
 
-                <label htmlFor="password" className="text-sm text-primary-gray">
+                {/* <label htmlFor="password" className="text-sm text-primary-gray">
                   Your password
                 </label>
                 <Field
@@ -190,7 +196,7 @@ export default function MyProfile() {
                   type="password"
                   name="password"
                   disabled={!isEditing}
-                />
+                /> */}
 
                 <label htmlFor="age" className="text-sm text-primary-gray">
                   Age
