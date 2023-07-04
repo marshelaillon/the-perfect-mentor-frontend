@@ -25,12 +25,13 @@ export default function LogIn() {
     data,
     isLoading,
     isSuccess: isGetMeSuccess,
+    isFetching,
   } = useGetMeQuery(undefined, { skip: accessToken ? false : true });
 
   useEffect(() => {
     if (accessToken && isGetMeSuccess) {
       dispatch(setUser(data));
-      navigate('/profile');
+      navigate('/app/profile');
     }
   }, [accessToken, isGetMeSuccess, data, dispatch, navigate]);
 
@@ -123,7 +124,7 @@ export default function LogIn() {
             </div>
 
             <div className="flex justify-between">
-              <Link to="/profile">Forgot your password?</Link>
+              <Link to="/app/profile">Forgot your password?</Link>
               <Link to="/signup">Sign up</Link>
             </div>
           </div>

@@ -39,15 +39,11 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
       };
     }
 
-    const { data: newAccessToken } = await baseQuery(
-      refreshOptions,
-      api,
-      extraOptions
-    );
+    const { data } = await baseQuery(refreshOptions, api, extraOptions);
 
-    if (newAccessToken) {
+    if (data) {
       // store the new token
-      api.dispatch(setTokens({ newAccessToken, refreshToken }));
+      api.dispatch(setTokens({ accessToken: data.accessToken, refreshToken }));
       // retry the original query with new access token
       result = await baseQuery(args, api, extraOptions);
     } else {

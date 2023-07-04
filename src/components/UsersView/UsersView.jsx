@@ -3,6 +3,7 @@ import doodle1 from '../../assets/doodle-1-svg.svg';
 import doodle3 from '../../assets/doodle-3-svg.svg';
 import searchIcon from '../../assets/search-icon.png';
 import './UsersView.css';
+import NavigationBar from '../NavigationBar/NavigationBar';
 
 export default function UsersView() {
   return (
@@ -56,6 +57,8 @@ export default function UsersView() {
             </div>
           ))}
         </div>
+
+        <NavigationBar />
       </div>
     </>
   );

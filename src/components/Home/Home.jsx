@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGetMeQuery } from '../../services/thePerfectMentorApi';
@@ -19,9 +19,9 @@ export default function Home() {
   });
 
   useEffect(() => {
-    if (accessToken && isSuccess) {
+    if (accessToken && isSuccess && data) {
       dispatch(setUser(data));
-      navigate('/profile');
+      navigate('/app/users');
     }
   }, [data, dispatch, isSuccess, navigate, accessToken]);
 

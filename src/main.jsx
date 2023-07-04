@@ -14,17 +14,17 @@ import {
 import './index.css';
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <PrivateRoutes />,
-    children: [
-      { path: '/users', element: <UsersView /> },
-      { path: '/profile', element: <MyProfile /> },
-    ],
-  },
-  { path: '/home', element: <Home /> },
+  { path: '/', element: <Home /> },
   { path: '/signup', element: <SignUp /> },
   { path: '/login', element: <LogIn /> },
+  {
+    path: '/app',
+    element: <PrivateRoutes />,
+    children: [
+      { path: 'users', element: <UsersView /> },
+      { path: 'profile', element: <MyProfile /> },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
