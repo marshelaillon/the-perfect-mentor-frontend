@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
 import title from '../../assets/title.png';
 import doodle1 from '../../assets/doodle-1.png';
 import doodle2 from '../../assets/doodle-2.png';
@@ -10,7 +11,6 @@ import {
   useGetRolesQuery,
   useRegisterUserMutation,
 } from '../../services/thePerfectMentorApi';
-import { Link } from 'react-router-dom';
 
 export default function SignUp() {
   const { data: roles, isLoading: areRolesLoading } = useGetRolesQuery();

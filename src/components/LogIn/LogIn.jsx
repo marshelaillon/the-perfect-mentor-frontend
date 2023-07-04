@@ -122,9 +122,10 @@ export default function LogIn() {
               </span>
             </div>
 
-            <Link to="/profile" className="pl-4">
-              Forgot your password?
-            </Link>
+            <div className="flex justify-between">
+              <Link to="/profile">Forgot your password?</Link>
+              <Link to="/signup">Sign up</Link>
+            </div>
           </div>
           <button
             type="submit"

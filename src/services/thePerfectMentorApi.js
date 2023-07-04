@@ -41,14 +41,15 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
 
     const refreshResult = await baseQuery(refreshOptions, api, extraOptions);
 
-    console.log(refreshResult);
     if (refreshResult?.data) {
+      console.log(refreshResult?.data, 'REFRESH RESULT DATA');
       // store the new token
       api.dispatch(setTokens({ ...refreshResult.data, refreshToken: '123' }));
       // retry the original query with new access token
       result = await baseQuery(args, api, extraOptions);
     } else {
       api.dispatch(clearTokens());
+      window.location.href = '/';
       // args.headers.authorization = null;
     }
   }
@@ -82,13 +83,33 @@ export const thePerfectMentorApi = createApi({
     }),
     updateUserData: builder.mutation({
       query: newData => ({
-        url: `${VITE_LOCAL_API_URL}/api/v1/user/login`,
+        url: `${VITE_LOCAL_API_URL}/api/v1/user/`,
         method: 'PATCH',
         body: newData,
       }),
     }),
   }),
 });
+
+export const updateUserData = async (newUserData, userId, accessToken) => {
+  try {
+    const response = await fetch(
+      `${VITE_LOCAL_API_URL}/api/v1/user/${userId}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(newUserData),
+      }
+    );
+    const jsonRes = await response.json();
+    return jsonRes;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const {
   useGetRolesQuery,

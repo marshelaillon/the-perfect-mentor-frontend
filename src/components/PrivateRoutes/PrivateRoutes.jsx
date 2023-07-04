@@ -7,5 +7,5 @@ export default function PrivateRoutes() {
 
   useEffect(() => {}, [isSuccess]);
 
-  return isSuccess ? <Outlet /> : <Navigate to="/login" />;
+  return isSuccess ? <Outlet /> : <Navigate to="/home" />;
 }

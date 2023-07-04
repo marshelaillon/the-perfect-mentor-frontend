@@ -9,8 +9,8 @@ import {
   UsersView,
   MyProfile,
   PrivateRoutes,
+  Home,
 } from './components/index.jsx';
-import App from './App.jsx';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -18,11 +18,11 @@ const router = createBrowserRouter([
     path: '/',
     element: <PrivateRoutes />,
     children: [
-      { path: '/', element: <App /> },
       { path: '/users', element: <UsersView /> },
       { path: '/profile', element: <MyProfile /> },
     ],
   },
+  { path: '/home', element: <Home /> },
   { path: '/signup', element: <SignUp /> },
   { path: '/login', element: <LogIn /> },
 ]);
