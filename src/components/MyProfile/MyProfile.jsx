@@ -19,6 +19,7 @@ import profilePic from '../../assets/profile.svg';
 
 import './MyProfile.css';
 import '../../styles/loader.css';
+import { useGetCountriesQuery } from '../../services/restCountriesApi';
 
 export default function MyProfile() {
   const [isEditing, setIsEditing] = useState(false);
@@ -26,14 +27,22 @@ export default function MyProfile() {
   const dispatch = useDispatch();
   const { data: user, isLoading, isSuccess, refetch } = useGetMeQuery();
   const { data: roles, isSuccess: AreRolesSucceeded } = useGetRolesQuery();
+  const { data: countries, isSuccess: AreCountries } = useGetCountriesQuery();
   const { accessToken } = useSelector(state => state.auth);
 
   const [initialValues, setInitialValues] = useState({
     name: user?.name || '',
     lastname: user?.lastname || '',
-    email: user?.email,
+    // country_residence: user?.residence = '',
+    // occupation: user?.occupation,
+    // description: user?.description,
+    language: user?.language,
     role: user?.role._id || '',
   });
+
+  useEffect(() => {
+    if (AreCountries) console.log(countries);
+  }, [countries]);
 
   useEffect(() => {
     refetch();
