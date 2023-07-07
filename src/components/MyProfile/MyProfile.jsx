@@ -19,7 +19,6 @@ import profilePic from '../../assets/profile.svg';
 
 import './MyProfile.css';
 import '../../styles/loader.css';
-import { useGetCountriesQuery } from '../../services/restCountriesApi';
 
 export default function MyProfile() {
   const [isEditing, setIsEditing] = useState(false);
@@ -27,22 +26,19 @@ export default function MyProfile() {
   const dispatch = useDispatch();
   const { data: user, isLoading, isSuccess, refetch } = useGetMeQuery();
   const { data: roles, isSuccess: AreRolesSucceeded } = useGetRolesQuery();
-  const { data: countries, isSuccess: AreCountries } = useGetCountriesQuery();
   const { accessToken } = useSelector(state => state.auth);
 
   const [initialValues, setInitialValues] = useState({
     name: user?.name || '',
     lastname: user?.lastname || '',
-    // country_residence: user?.residence = '',
-    // occupation: user?.occupation,
-    // description: user?.description,
-    language: user?.language,
+    residence_country: user?.residence_country || '',
+    occupation: user?.occupation || '',
+    description: user?.description || '',
+    languages: user?.languages || [],
+    skills: user?.skills || [],
     role: user?.role._id || '',
+    email: user?.email,
   });
-
-  useEffect(() => {
-    if (AreCountries) console.log(countries);
-  }, [countries]);
 
   useEffect(() => {
     refetch();
@@ -56,6 +52,11 @@ export default function MyProfile() {
           name: values.name,
           lastname: values.lastname,
           role: values.role,
+          residence_country: values.residence_country,
+          occupation: values.occupation,
+          description: values.description,
+          languages: values.languages,
+          skills: values.skills,
         },
         user._id,
         accessToken
@@ -73,6 +74,11 @@ export default function MyProfile() {
           lastname: res.user?.lastname,
           email: res.user?.email,
           role: res.user?.role._id,
+          residence_country: res.user?.residence_country,
+          occupation: res.user?.occupation,
+          description: res.user?.description,
+          languages: res.user?.languages,
+          skills: res.user?.skills,
         });
         alertUpdatedCorrectly();
       }
@@ -84,19 +90,19 @@ export default function MyProfile() {
     }
   };
 
-  const handleValidation = values => {
-    const errors = {};
-    if (!values.name) {
-      errors.requiredName = 'Enter your name';
-    }
-    if (!values.lastname) {
-      errors.requiredName = 'Enter your lastname';
-    }
-    if (!values.role) {
-      errors.requiredRole = 'Select a role';
-    }
-    return errors;
-  };
+  // const handleValidation = values => {
+  //   const errors = {};
+  //   if (!values.name) {
+  //     errors.requiredName = 'Enter your name';
+  //   }
+  //   if (!values.lastname) {
+  //     errors.requiredName = 'Enter your lastname';
+  //   }
+  //   if (!values.role) {
+  //     errors.requiredRole = 'Select a role';
+  //   }
+  //   return errors;
+  // };
 
   const activateEdit = () => {
     setIsEditing(true);
@@ -108,7 +114,7 @@ export default function MyProfile() {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validate={handleValidation}
+      //validate={handleValidation}
     >
       {({ values, touched, errors, handleChange, handleBlur }) => (
         <div className="profile-container full-height">

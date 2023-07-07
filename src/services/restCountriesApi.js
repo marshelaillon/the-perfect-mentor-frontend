@@ -9,7 +9,7 @@ export const restCountriesApi = createApi({
   }),
   endpoints: builder => ({
     getCountries: builder.query({
-      query: () => `/all?fields=name,flags`,
+      query: () => `/all?fields=name`,
     }),
   }),
 });
