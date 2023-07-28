@@ -1,0 +1,49 @@
+{
+  "techRoles": [
+    { "roleName": "Accessibility Specialist" },
+
+    { "roleName": "Back-End Developer" },
+
+    { "roleName": "Cloud Architect" },
+
+    { "roleName": "Content Manager" },
+
+    { "roleName": "Data Scientist" },
+
+    { "roleName": "Database Administrator" },
+
+    { "roleName": "DevOps Manager" },
+
+    { "roleName": "Digital Marketing Manager" },
+
+    { "roleName": "Front-End Developer" },
+
+    { "roleName": "Full-Stack Web Developer" },
+
+    { "roleName": "Growth Hacker" },
+
+    { "roleName": "Information Architect" },
+
+    { "roleName": "Marketing Technologist" },
+
+    { "roleName": "Mobile Developer" },
+
+    { "roleName": "Product Manager" },
+
+    { "roleName": "QA Specialist" },
+
+    { "roleName": "SEO Consultant" },
+
+    { "roleName": "Social Media Manager" },
+
+    { "roleName": "Software Developer" },
+
+    { "roleName": "Technical Lead" },
+
+    { "roleName": "UI Designer" },
+
+    { "roleName": "UX Designer" },
+
+    { "roleName": "Web Analytics Developer" }
+  ]
+}

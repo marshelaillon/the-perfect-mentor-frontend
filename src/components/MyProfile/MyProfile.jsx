@@ -16,7 +16,6 @@ import { setTokens } from '../../app/features/authSlice';
 import { alertUpdatedCorrectly } from '../../utils/sweetAlert';
 
 import profilePic from '../../assets/profile.svg';
-
 import './MyProfile.css';
 import '../../styles/loader.css';
 
@@ -36,7 +35,7 @@ export default function MyProfile() {
     description: user?.description || '',
     languages: user?.languages || [],
     skills: user?.skills || [],
-    role: user?.role._id || '',
+    role: user?.role || '',
     email: user?.email,
   });
 
@@ -46,6 +45,7 @@ export default function MyProfile() {
 
   const handleSubmit = async values => {
     try {
+      console.log('VALUES: ', values);
       setIsUpdating(true);
       const res = await updateUserData(
         {
@@ -111,11 +111,7 @@ export default function MyProfile() {
   if (isLoading || isUpdating) return <p className="loader"></p>;
 
   return isSuccess ? (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      //validate={handleValidation}
-    >
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       {({ values, touched, errors, handleChange, handleBlur }) => (
         <div className="profile-container full-height">
           <ProfileHeader
